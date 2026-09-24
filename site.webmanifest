@@ -1,0 +1,12 @@
+{
+  "name": "Jinx Free Systems",
+  "short_name": "Jinx Free",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b0d",
+  "theme_color": "#080b0d",
+  "icons": [
+    { "src": "favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
