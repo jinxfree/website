@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jinx Free Systems</title>
+<meta name="description" content="Confidence at the speed your agents ship.">
+<meta name="theme-color" content="#080b0d">
+<meta property="og:title" content="Jinx Free Systems">
+<meta property="og:description" content="Confidence at the speed your agents ship.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Martian+Mono:wght@200..700&display=swap">
+<style>
+:root{
+  --ground:#080b0d; --ink:#e6edf0; --rule-strong:#5b6b75; --cyan:#3fd8e8;
+  --display:"Martian Mono","IBM Plex Mono",ui-monospace,monospace;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  /* 96px on a 1440x900 screen, scaled down with the viewport */
+  --logo: clamp(40px, min(6.667vw, 10.667vh), 96px);
+  --phrase: clamp(17px, min(1.944vw, 3.111vh), 28px);
+  --edge: clamp(24px, 4.444vw, 64px);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--mono);overflow:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:#14454b;color:var(--ink)}
+
+main{position:relative;min-height:100vh;min-height:100svh}
+
+/* Ordered (Bayer) dither field, anchored bottom-right */
+main::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.8;
+  background:url("dither.png") right bottom / auto 100% no-repeat;
+  image-rendering:pixelated;
+}
+
+.center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 var(--edge)}
+
+/* Lockup: wordmark in a single-line box, tagline breaking the bottom border */
+.lockup{position:relative;top:-2.2vh;display:inline-block;font-size:var(--logo);line-height:1;
+  border:1px solid var(--rule-strong);border-bottom:0;padding:.469em .625em .531em;background:var(--ground)}
+.wordmark{margin:0;display:inline-flex;flex-direction:column;align-items:flex-end;gap:.14em;
+  font-family:var(--display);font-size:1em;line-height:1;color:var(--ink);font-weight:inherit}
+.wordmark__main{font-weight:600;letter-spacing:-.04em;white-space:nowrap}
+.wordmark__x{display:inline-block;width:.7em;height:.624em;vertical-align:baseline;overflow:hidden}
+.wordmark__x path{fill:none;stroke:var(--cyan);stroke-width:130;stroke-linejoin:miter}
+.wordmark__u{color:var(--cyan)}
+.wordmark__sys{font-size:.48em;font-weight:200;letter-spacing:-.01em;white-space:nowrap}
+.lockup__base{position:absolute;left:-1px;right:-1px;bottom:0;transform:translateY(50%);display:flex;align-items:center}
+.lockup__base::before{content:"";flex:none;width:calc(1.071em + 1px);height:1px;background:var(--rule-strong)}
+.lockup__base::after{content:"";flex:1;height:1px;background:var(--rule-strong)}
+.lockup__tag{font-family:var(--mono);font-size:max(12px,.2083em);line-height:1.333;font-weight:400;letter-spacing:.01em;
+  color:var(--ink);white-space:nowrap;padding:0 .833em;border-left:1px solid var(--rule-strong);border-right:1px solid var(--rule-strong);background:var(--ground)}
+
+/* Phrase: a shell prompt with a block cursor */
+.phrase{position:absolute;left:var(--edge);bottom:var(--edge);margin:0;display:flex;gap:.6em;
+  font-family:var(--display);font-size:var(--phrase);line-height:1.286;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.phrase__prompt{color:var(--cyan)}
+.phrase__thin{font-weight:200}
+.cursor{display:inline-block;width:.6em;height:1em;margin-left:.25em;vertical-align:-.17em;background:var(--cyan);
+  animation:blink 1.06s step-end infinite}
+@keyframes blink{0%,49.9%{opacity:1}50%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+@media (max-aspect-ratio:1/1){main::before{background-size:190% auto;opacity:.7}}
+</style>
+</head>
+<body>
+<main>
+  <div class="center">
+    <div class="lockup">
+      <h1 class="wordmark" aria-label="Jinx Free Systems"><span class="wordmark__main">jin<svg class="wordmark__x" viewBox="0 0 700 624" aria-hidden="true"><path d="M40 -120 L233.8 312 L40 744"/><path d="M660 -120 L466.2 312 L660 744"/></svg><span class="wordmark__u">_</span>free</span><span class="wordmark__sys">systems</span></h1>
+      <span class="lockup__base"><span class="lockup__tag">no luck required</span></span>
+    </div>
+  </div>
+  <p class="phrase"><span class="phrase__prompt" aria-hidden="true">$</span><span>Confidence at the speed<br><span class="phrase__thin">your agents ship</span><span class="cursor" aria-hidden="true"></span></span></p>
+</main>
+</body>
+</html>
